@@ -1,4 +1,5 @@
 FROM prom/pushgateway
+ARG tag
 USER nobody
 EXPOSE 5000
 CMD ["-web.listen-address", ":5000", "-log.format", "logger:stdout?json=true"]
