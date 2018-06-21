@@ -1,4 +1,4 @@
-FROM prom/pushgateway
+FROM prom/pushgateway:v0.4.0
 ARG tag
 USER nobody
 EXPOSE 5000
