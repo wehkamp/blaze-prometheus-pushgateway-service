@@ -1,0 +1,11 @@
+site_name: blaze-prometheus-pushgateway-service-docs
+site_description: This is the documentation for blaze-prometheus-pushgateway-service
+repo_url: https://github.com/wehkamp/blaze-prometheus-pushgateway-service
+edit_uri: edit/master/docs
+
+plugins:
+  - techdocs-core
+  - search
+
+nav:
+  - Home: index.md
