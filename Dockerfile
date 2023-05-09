@@ -1,9 +1,10 @@
 FROM prom/pushgateway:v1.5.1
-EXPOSE 5000
+ARG tag
+EXPOSE 5001
 RUN mkdir -p /pushgateway && chown nobody:nobody /pushgateway
 WORKDIR /pushgateway
 USER 65534
-CMD ["--web.listen-address", ":5000", "--log.format", "json"]
+CMD ["--web.listen-address", ":5001", "--log.format", "json"]
 ENTRYPOINT [ "/bin/pushgateway" ]
 LABEL blaze.service.id="prometheus-pushgateway" \
       blaze.service.name="blaze-prometheus-pushgateway-service" \
@@ -16,7 +17,7 @@ LABEL blaze.service.id="prometheus-pushgateway" \
       blaze.service.deployment.cpu="0.1" \
       blaze.service.deployment.memory="100" \
       blaze.service.deployment.minimum-instances="1" \
-      blaze.service.deployment.internal-port="5000" \
+      blaze.service.deployment.internal-port="5001" \
       blaze.service.deployment.promotion.accept.manual-step="false" \
       blaze.service.deployment.promotion.prod.manual-step="false" \
       blaze.service.routing.consumer.exposed="false" \
