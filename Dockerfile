@@ -1,8 +1,11 @@
-FROM prom/pushgateway:v0.4.0
+FROM prom/pushgateway:v1.5.1
 ARG tag
-USER nobody
-EXPOSE 5000
-CMD ["-web.listen-address", ":5000", "-log.format", "logger:stdout?json=true"]
+EXPOSE 5001
+RUN mkdir -p /pushgateway && chown nobody:nobody /pushgateway
+WORKDIR /pushgateway
+USER 65534
+CMD ["--web.listen-address", ":5000", "--log.format", "json"]
+ENTRYPOINT [ "/bin/pushgateway" ]
 LABEL blaze.service.id="prometheus-pushgateway" \
       blaze.service.name="blaze-prometheus-pushgateway-service" \
       blaze.service.version="${tag}" \
